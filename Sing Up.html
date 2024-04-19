@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url("img/banner/bradcam.png")
+          no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .signup-form {
+        padding: 20px;
+        background-color: rgba(
+          51,
+          51,
+          51,
+          0.8
+        ); /* Semi-transparent background */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: none;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        background-color: #0a58ca;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #064785;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-form">
+      <h2>Formulario de Registro</h2>
+      <form action="/submit-your-form-handler" method="POST">
+        <input
+          type="text"
+          placeholder="Nombre de usuario"
+          name="username"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          name="password"
+          required
+        />
+        <input type="submit" value="Registrarse" />
+      </form>
+    </div>
+  </body>
+</html>
