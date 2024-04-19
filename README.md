@@ -13,5 +13,5 @@ Aspiramos a consolidar al Tiquina Palace Hotel como el número uno en la ciudad 
 
 En este proyecto se rediseñara y se agregaran funciones adicionales a la pagina web del hotel tratando de que sea mas atractiva y que nos permita realizar las reservas desde la pagina sin necesidad de contactarse obligatoriamente en con el hotel.
 
-##Integrantes
+## Integrantes
 - Mateo Joaquin Valenzuela Rivera
