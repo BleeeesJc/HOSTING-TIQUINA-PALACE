@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logonegro.png" />
     <style>
       body,
       html {
         height: 100%;
         margin: 0;
         font-family: Arial, sans-serif;
-        background: url("img/banner/bradcam.png")
-          no-repeat center center fixed;
+        background: url("img/banner/bradcam.png") no-repeat center center fixed;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -67,12 +67,21 @@
           required
         />
         <input
+          type="email"
+          placeholder="Correo electrónico"
+          name="email"
+          required
+        />
+        <input
           type="password"
           placeholder="Contraseña"
           name="password"
           required
         />
         <input type="submit" value="Registrarse" />
+        <div class="login-link">
+          ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+        </div>
       </form>
     </div>
   </body>
