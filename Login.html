@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completa tu Registro</title>
+    <style>
+         body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://example.com/your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .signup-form {
+            width: 500px; 
+            padding: 20px; 
+            background-color: rgba(51, 51, 51, 0.8); 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="date"] {
+            width: 100%;
+            padding: 8px; 
+            margin: 6px 0; 
+            display: inline-block;
+            border: none;
+            background: #555;
+            color: white;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #0a58ca;
+            color: white;
+            padding: 12px 20px; 
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #064785;
+        }
+      h2 {
+            margin: 0; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-form">
+        <h2>Registrate</h2>
+        <form action="" method="POST">
+            <input type="text" placeholder="Nombre de usuario" name="username" required>
+            <input type="text" placeholder="Nombre" name="first_name" required>
+            <input type="text" placeholder="Apellido" name="last_name" required>
+            <input type="password" placeholder="Contraseña" name="password" required>
+            <input type="email" placeholder="Correo electrónico" name="email" required>
+            <input type="date" placeholder="Fecha de nacimiento" name="birthdate" required>
+            <input type="submit" value="Registrarse">
+        </form>
+    </div>
+</body>
+</html>
