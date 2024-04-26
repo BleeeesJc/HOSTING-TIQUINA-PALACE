@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+:root
+{
+    --white: #f9f9f9;
+    --green: #0c0c0c;
+    --green-light: #fbffc3;
+    --black: #fdfff7;
+    --grey: #85888C;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: "Poppins", sans-serif;
+    
+}
+
+main
+{
+    padding: 20px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+ul
+{
+    list-style: none;
+}
+
+.header {
+  background-color: var(--green);
+  box-shadow: 1px 1px 5px 0px var(--grey);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  text-align: center; /* Centra horizontalmente */
+  position: fixed; /* Si no está ya definido */
+  z-index: 10000;
+}
+
+.logo {
+  color: var(--white);
+  font-size: 60px;
+  display: inline-block;
+}
+
+
+.nav
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--green);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .5s ease-out;
+    z-index: 1000000;
+}
+
+.menu a
+{
+    display: block;
+    padding: 30px;
+    color: var(--white);
+}
+
+.menu a:hover
+{
+    background-color: var(--green-light);
+}
+
+.hamb
+{
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}
+
+
+.hamb-line 
+{
+    background: var(--white);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+    
+}
+
+.hamb-line::before,
+.hamb-line::after
+{
+    background: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.hamb-line::before
+{
+    top: 5px;
+}
+
+.hamb-line::after
+{
+    top: -5px;
+}
+
+.side-menu 
+{
+    display: none;
+}
+
+.side-menu:checked ~ nav
+{
+    max-height: 100%;
+}
+
+.side-menu:checked ~ .hamb .hamb-line 
+{
+    background: transparent;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::before 
+{
+    transform: rotate(-45deg);
+    top:0;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::after 
+{
+    transform: rotate(45deg);
+    top:0;
+}
+
+@media (min-width: 768px)
+{
+    .nav
+    {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    .menu li
+    {
+        float: left;
+    }
+
+    .menu a:hover
+    {
+        background-color: transparent;
+        color: var(--green-light)
+    }
+
+    .hamb
+    {
+        display: none;
+    }
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-image {
+  width: 60%;
+}
+.room-image img {
+  width: 100%;
+  height: auto;
+}
+.room-details {
+  width: 35%;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.room-features {
+  list-style: none;
+  padding: 0;
+}
+.room-features li {
+  margin-bottom: 10px;
+}
+.room-description {
+  margin-top: 20px;
+}
+.book-button {
+  background-color: #c0a060;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+.room-image-carousel {
+  position: relative;
+  
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 330px; /* Ajustamos la altura del contenedor del carrusel */
+  width: 600px; /* Ajustamos el ancho del contenedor del carrusel */
+  overflow: hidden; /* Ocultamos cualquier desborde de imagen */
+  margin: auto; /* Para centrar el carrusel si es necesario */
+}
+
+.carousel-image {
+  max-width: 100%; /* Limitamos la imagen al ancho del contenedor */
+  max-height: 100%; /* Limitamos la imagen a la altura del contenedor */
+  object-fit: contain; /* Aseguramos que la imagen completa se muestre */
+  width: auto; /* Permitimos que el ancho se ajuste automáticamente */
+  height: auto; /* Permitimos que la altura se ajuste automáticamente */
+}
+
+
+.carousel-image.active {
+  display: block;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra las tarjetas horizontalmente */
+  padding: 20px;
+}
+.room-card {
+  margin-bottom: 20px; /* Añade espacio entre las tarjetas */
+}
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #000000; /* Change this to match your color scheme */
+  color: white;
+  width: 100%; /* Set the footer to occupy 100% of the body's width */
+  margin: 0; /* Ensure there's no margin */
+  box-sizing: border-box; /* Make sure padding is included in the width */
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item {
+  margin-bottom: 20px;
+}
+
+.contact-item h3 {
+  margin-bottom: 10px;
+}
+
+.contact-map iframe {
+  border: 0;
+  width: 500px;
+  height: 500px; /* Adjust as necessary */
+}
+
+@media (max-width: 768px) {
+  .contact-footer {
+      flex-direction: column;
+  }
+
+  .contact-info {
+      margin-bottom: 20px;
+  }
+}
+/* Assuming you want the main content to push the footer down, if there's more content */
+.main-content {
+  flex: 1;
+}
