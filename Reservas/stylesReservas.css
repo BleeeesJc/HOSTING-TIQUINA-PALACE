@@ -19,6 +19,7 @@
 body
 {
     font-family: "Poppins", sans-serif;
+    
 }
 
 main
@@ -180,8 +181,8 @@ body {
   padding: 0;
 }
 .container {
-  width: 950px;
-  height: 600px;
+  width: 900px;
+  height: 500px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -277,4 +278,48 @@ main {
 }
 .room-card {
   margin-bottom: 20px; /* Añade espacio entre las tarjetas */
+}
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #000000; /* Change this to match your color scheme */
+  color: white;
+  width: 100%; /* Set the footer to occupy 100% of the body's width */
+  margin: 0; /* Ensure there's no margin */
+  box-sizing: border-box; /* Make sure padding is included in the width */
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item {
+  margin-bottom: 20px;
+}
+
+.contact-item h3 {
+  margin-bottom: 10px;
+}
+
+.contact-map iframe {
+  border: 0;
+  width: 500px;
+  height: 500px; /* Adjust as necessary */
+}
+
+@media (max-width: 768px) {
+  .contact-footer {
+      flex-direction: column;
+  }
+
+  .contact-info {
+      margin-bottom: 20px;
+  }
+}
+/* Assuming you want the main content to push the footer down, if there's more content */
+.main-content {
+  flex: 1;
 }
