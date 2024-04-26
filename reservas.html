@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservas</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logonegro.png" />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url("img/banner/Portada2.jpg") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .forms-container {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+      }
+      .form-box {
+        padding: 20px;
+        background-color: rgba(51, 51, 51, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        width: 45%;
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="date"] {
+        width: 95%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: none;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        background-color: #0a58ca;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #064785;
+      }
+      h2 {
+        margin: 0;
+        text-align: center;
+      }
+      .login-link {
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .login-link a {
+        color: #0a58ca;
+        text-decoration: none;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="forms-container">
+      <div class="form-box">
+        <h2>Detalles de Reserva</h2>
+        <form action="" method="POST">
+          <input
+            type="date"
+            placeholder="Entrada"
+            name="Enter"
+            required
+          />
+          <input
+          type="date"
+          placeholder="Salida"
+          name="Leave"
+          required
+        />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            required
+          />
+          <input type="submit" value="Iniciar Sesión" />
+        </form>
+      </div>
+      <div class="form-box">
+        <h2>Registrarse</h2>
+        <form action="/register-handler" method="POST">
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            name="new-username"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            name="new-password"
+            required
+          />
+          <input type="submit" value="Registrarse" />
+          <div class="login-link">
+            ¿Ya tienes una cuenta? <a href="Login.html">Inicia sesión</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
