@@ -20,20 +20,20 @@
         color: white;
       }
       .forms-container {
-            display: flex;
-            justify-content: center; /* Centrar los formularios */
-            flex-wrap: wrap; /* Permite que los formularios se envuelvan si no hay suficiente espacio */
-            padding: 10px 0;
-        }
+        display: flex;
+        justify-content: center; /* Centrar los formularios */
+        flex-wrap: wrap; /* Permite que los formularios se envuelvan si no hay suficiente espacio */
+        padding: 10px 0;
+      }
 
-        /* Si los formularios son demasiado anchos, puedes reducir su width o usar max-width */
-        .forms-box,
-        .reservation-form {
-            max-width: 600px; /* Esto los hará más pequeños y centrados dentro del .container */
-            width: 100%; /* O podrías cambiar esto por un porcentaje específico */
-            padding: 20px;
-            margin: 0 10px; /* Agrega margen para espacio entre los formularios */
-        }
+      /* Si los formularios son demasiado anchos, puedes reducir su width o usar max-width */
+      .forms-box,
+      .reservation-form {
+        max-width: 600px; /* Esto los hará más pequeños y centrados dentro del .container */
+        width: 100%; /* O podrías cambiar esto por un porcentaje específico */
+        padding: 20px;
+        margin: 0 10px; /* Agrega margen para espacio entre los formularios */
+      }
       .forms-box {
         background-color: rgba(51, 51, 51, 0.8);
         border-radius: 8px;
@@ -81,7 +81,6 @@
         text-align: center;
       }
 
-
       .input-group input {
         width: 85%; /* Asegura que los inputs ocupen todo el ancho disponible */
         padding: 10px;
@@ -98,13 +97,13 @@
         width: 50%; /* Adjusted width for better fit */
         overflow: auto; /* In case content overflows */
         padding: 20px; /* Aumenta el padding si es necesario */
-}
+      }
 
-.reservation-form .input-group label {
-  margin-bottom: 5px;
-}
+      .reservation-form .input-group label {
+        margin-bottom: 5px;
+      }
 
-.reservation-form .input-group input{
+      .reservation-form .input-group input {
         width: 85%; /* Full width */
         padding: 10px;
         margin: 10px 0;
@@ -113,30 +112,29 @@
         color: white;
         border-radius: 5px;
       }
-.reservation-form .input-group select {
-  width: 90%; /* Ajusta el ancho como prefieras */
-  padding: 10px;
-  margin: 10px 0;
-  background: #555; /* Fondo más claro para los inputs */
-  color: white; /* Texto oscuro para los inputs */
-  border-radius: 5px;
-}
-.fecha-caducidad-container {
-  width: 80%;
-  display: flex;
-  align-items: center; /* Alinea los elementos verticalmente en el centro */
-  justify-content: flex-start; /* Alinea los elementos a la izquierda del contenedor */
-}
+      .reservation-form .input-group select {
+        width: 90%; /* Ajusta el ancho como prefieras */
+        padding: 10px;
+        margin: 10px 0;
+        background: #555; /* Fondo más claro para los inputs */
+        color: white; /* Texto oscuro para los inputs */
+        border-radius: 5px;
+      }
+      .fecha-caducidad-container {
+        width: 80%;
+        display: flex;
+        align-items: center; /* Alinea los elementos verticalmente en el centro */
+        justify-content: flex-start; /* Alinea los elementos a la izquierda del contenedor */
+      }
 
-.fecha-caducidad-container label {
-  margin-right: 1px; /* Espacio entre la etiqueta y el primer select */
-}
+      .fecha-caducidad-container label {
+        margin-right: 1px; /* Espacio entre la etiqueta y el primer select */
+      }
 
-.fecha-caducidad-container select {
-  margin-right: 10px; /* Espacio entre los selects */
-  border-radius: 4px; /* Bordes redondeados ligeramente */
-}
-
+      .fecha-caducidad-container select {
+        margin-right: 10px; /* Espacio entre los selects */
+        border-radius: 4px; /* Bordes redondeados ligeramente */
+      }
     </style>
   </head>
   <body>
@@ -180,220 +178,204 @@
         </form>
       </div>
     </div>
-      <div class="divider"></div>
+    <div class="divider"></div>
 
-      <div class="reservation-form">
-        <h2>Datos Cliente</h2>
-        <form action="" method="POST">
-          <div class="input-group">
-            <input
-            type="text"
-            placeholder="Nombre"
-            name="name"
-            required
-          />
-          </div>
-          <div class="input-group">
-            <input
-            type="text"
-            placeholder="Apellido"
-            name="last-name"
-            required
-          />
-          </div>
-          <div class="input-group">
-            <input
+    <div class="reservation-form">
+      <h2>Datos Cliente</h2>
+      <form action="" method="POST">
+        <div class="input-group">
+          <input type="text" placeholder="Nombre" name="name" required />
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Apellido" name="last-name" required />
+        </div>
+        <div class="input-group">
+          <input
             type="Email"
             placeholder="Correo Electronico"
             name="email"
             required
           />
-          </div>
-          <div class="input-group">
-            <input
-            type="text"
-            placeholder="Direccion"
-            name="direc"
-            required
-          />
-          </div>
-          <div class="input-group">
-            <input
-            type="text"
-            placeholder="Ciudad"
-            name="City"
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Direccion" name="direc" required />
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Ciudad" name="City" required />
+        </div>
+        <div class="input-group">
+          <input
+            type="cod"
+            id="codigo"
+            name="codigo"
+            placeholder="Codigo Postal"
             required
           />
         </div>
         <div class="input-group">
-          <input type="cod" id="codigo" name="codigo" placeholder="Codigo Postal" required>
+          <select id="room" name="room">
+            <option value="AF">Afganistán</option>
+            <option value="AL">Albania</option>
+            <option value="DE">Alemania</option>
+            <option value="AD">Andorra</option>
+            <option value="AO">Angola</option>
+            <option value="AI">Anguila</option>
+            <option value="AQ">Antártida</option>
+            <option value="AG">Antigua y Barbuda</option>
+            <option value="SA">Arabia Saudita</option>
+            <option value="DZ">Argelia</option>
+            <option value="AR">Argentina</option>
+            <option value="AM">Armenia</option>
+            <option value="AW">Aruba</option>
+            <option value="AU">Australia</option>
+            <option value="AT">Austria</option>
+            <option value="AZ">Azerbaiyán</option>
+            <option value="BS">Bahamas</option>
+            <option value="BD">Bangladés</option>
+            <option value="BB">Barbados</option>
+            <option value="BH">Baréin</option>
+            <option value="BE">Bélgica</option>
+            <option value="BZ">Belice</option>
+            <option value="BJ">Benín</option>
+            <option value="BM">Bermudas</option>
+            <option value="BY">Bielorrusia</option>
+            <option value="MM">Birmania</option>
+            <option value="BO">Bolivia</option>
+            <option value="BA">Bosnia y Herzegovina</option>
+            <option value="BW">Botsuana</option>
+            <option value="BR">Brasil</option>
+            <option value="BN">Brunéi</option>
+            <option value="BG">Bulgaria</option>
+            <option value="BF">Burkina Faso</option>
+            <option value="BI">Burundi</option>
+            <option value="BT">Bután</option>
+            <option value="CV">Cabo Verde</option>
+            <option value="KH">Camboya</option>
+            <option value="CM">Camerún</option>
+            <option value="CA">Canadá</option>
+            <option value="QA">Catar</option>
+            <option value="TD">Chad</option>
+            <option value="CL">Chile</option>
+            <option value="CN">China</option>
+            <option value="CY">Chipre</option>
+            <option value="VA">Ciudad del Vaticano</option>
+            <option value="CO">Colombia</option>
+            <option value="KM">Comoras</option>
+            <option value="CG">Congo</option>
+            <option value="CD">Congo (Rep. Dem.)</option>
+            <option value="KR">Corea del Sur</option>
+            <option value="KP">Corea del Norte</option>
+            <option value="CI">Costa de Marfil</option>
+            <option value="CR">Costa Rica</option>
+            <option value="HR">Croacia</option>
+            <option value="CU">Cuba</option>
+            <option value="CW">Curazao</option>
+            <option value="DK">Dinamarca</option>
+            <option value="DM">Dominica</option>
+            <option value="EC">Ecuador</option>
+            <option value="EG">Egipto</option>
+            <option value="SV">El Salvador</option>
+            <option value="AE">Emiratos Árabes Unidos</option>
+            <option value="ER">Eritrea</option>
+            <option value="SK">Eslovaquia</option>
+            <option value="SI">Eslovenia</option>
+            <option value="ES">España</option>
+            <option value="US">Estados Unidos</option>
+            <option value="EE">Estonia</option>
+            <option value="ET">Etiopía</option>
+            <option value="PH">Filipinas</option>
+            <option value="FI">Finlandia</option>
+            <option value="FJ">Fiyi</option>
+            <option value="FR">Francia</option>
+          </select>
         </div>
-          <div class="input-group">
-            <select id="room" name="room">
-              <option value="AF">Afganistán</option>
-  <option value="AL">Albania</option>
-  <option value="DE">Alemania</option>
-  <option value="AD">Andorra</option>
-  <option value="AO">Angola</option>
-  <option value="AI">Anguila</option>
-  <option value="AQ">Antártida</option>
-  <option value="AG">Antigua y Barbuda</option>
-  <option value="SA">Arabia Saudita</option>
-  <option value="DZ">Argelia</option>
-  <option value="AR">Argentina</option>
-  <option value="AM">Armenia</option>
-  <option value="AW">Aruba</option>
-  <option value="AU">Australia</option>
-  <option value="AT">Austria</option>
-  <option value="AZ">Azerbaiyán</option>
-  <option value="BS">Bahamas</option>
-  <option value="BD">Bangladés</option>
-  <option value="BB">Barbados</option>
-  <option value="BH">Baréin</option>
-  <option value="BE">Bélgica</option>
-  <option value="BZ">Belice</option>
-  <option value="BJ">Benín</option>
-  <option value="BM">Bermudas</option>
-  <option value="BY">Bielorrusia</option>
-  <option value="MM">Birmania</option>
-  <option value="BO">Bolivia</option>
-  <option value="BA">Bosnia y Herzegovina</option>
-  <option value="BW">Botsuana</option>
-  <option value="BR">Brasil</option>
-  <option value="BN">Brunéi</option>
-  <option value="BG">Bulgaria</option>
-  <option value="BF">Burkina Faso</option>
-  <option value="BI">Burundi</option>
-  <option value="BT">Bután</option>
-  <option value="CV">Cabo Verde</option>
-  <option value="KH">Camboya</option>
-  <option value="CM">Camerún</option>
-  <option value="CA">Canadá</option>
-  <option value="QA">Catar</option>
-  <option value="TD">Chad</option>
-  <option value="CL">Chile</option>
-  <option value="CN">China</option>
-  <option value="CY">Chipre</option>
-  <option value="VA">Ciudad del Vaticano</option>
-  <option value="CO">Colombia</option>
-  <option value="KM">Comoras</option>
-  <option value="CG">Congo</option>
-  <option value="CD">Congo (Rep. Dem.)</option>
-  <option value="KR">Corea del Sur</option>
-  <option value="KP">Corea del Norte</option>
-  <option value="CI">Costa de Marfil</option>
-  <option value="CR">Costa Rica</option>
-  <option value="HR">Croacia</option>
-  <option value="CU">Cuba</option>
-  <option value="CW">Curazao</option>
-  <option value="DK">Dinamarca</option>
-  <option value="DM">Dominica</option>
-  <option value="EC">Ecuador</option>
-  <option value="EG">Egipto</option>
-  <option value="SV">El Salvador</option>
-  <option value="AE">Emiratos Árabes Unidos</option>
-  <option value="ER">Eritrea</option>
-  <option value="SK">Eslovaquia</option>
-  <option value="SI">Eslovenia</option>
-  <option value="ES">España</option>
-  <option value="US">Estados Unidos</option>
-  <option value="EE">Estonia</option>
-  <option value="ET">Etiopía</option>
-  <option value="PH">Filipinas</option>
-  <option value="FI">Finlandia</option>
-  <option value="FJ">Fiyi</option>
-  <option value="FR">Francia</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="peticiones">Peticiones Especiales:</label>
-            <input type="text" name="peticiones">
-          </div>
-          <div class="input-group">
-            <label for="service">Servicio Exta:</label>
-            <select id="service" name="service">
-              <option value="SPA">SPA</option>
-  <option value="DESA">Desayuno Buffet</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="llegada">Hora llegada:</label>
-            <select id="llegada" name="llegada">
-              <option value="1AM">1 AM</option>
-              <option value="2AM">2 AM</option>
-              <option value="3AM">3 AM</option>
-              <option value="4AM">4 AM</option>
-              <option value="5AM">5 AM</option>
-              <option value="6AM">6 AM</option>
-              <option value="7AM">7 AM</option>
-              <option value="8AM">8 AM</option>
-              <option value="9AM">9 AM</option>
-              <option value="10AM">10 AM</option>
-              <option value="11AM">11 AM</option>
-              <option value="12AM">12 PM</option>
-              <option value="13AM">13 PM</option>
-              <option value="14AM">14 PM</option>
-              <option value="15AM">15 PM</option>
-              <option value="16AM">16 PM</option>
-              <option value="17AM">17 PM</option>
-              <option value="18AM">18 PM</option>
-              <option value="19AM">19 PM</option>
-              <option value="20AM">20 PM</option>
-              <option value="21AM">21 PM</option>
-              <option value="22AM">22 PM</option>
-              <option value="23AM">23 PM</option>
-              <option value="24AM">24 PM</option>
-            </select>
-            <P>Check-in a partir de las 2 PM</P>
-          </div>
-          <h2>Detalles del Pago</h2>
-          <div class="input-group">
-            <label for="tipo">Tipo de Trajeta:</label>
-            <select id="tipo" name="tipo">
-              <option value="visa">Visa</option>
+        <div class="input-group">
+          <label for="peticiones">Peticiones Especiales:</label>
+          <input type="text" name="peticiones" />
+        </div>
+        <div class="input-group">
+          <label for="service">Servicio Exta:</label>
+          <select id="service" name="service">
+            <option value="SPA">SPA</option>
+            <option value="DESA">Desayuno Buffet</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="llegada">Hora llegada:</label>
+          <select id="llegada" name="llegada">
+            <option value="1AM">1 AM</option>
+            <option value="2AM">2 AM</option>
+            <option value="3AM">3 AM</option>
+            <option value="4AM">4 AM</option>
+            <option value="5AM">5 AM</option>
+            <option value="6AM">6 AM</option>
+            <option value="7AM">7 AM</option>
+            <option value="8AM">8 AM</option>
+            <option value="9AM">9 AM</option>
+            <option value="10AM">10 AM</option>
+            <option value="11AM">11 AM</option>
+            <option value="12AM">12 PM</option>
+            <option value="13AM">13 PM</option>
+            <option value="14AM">14 PM</option>
+            <option value="15AM">15 PM</option>
+            <option value="16AM">16 PM</option>
+            <option value="17AM">17 PM</option>
+            <option value="18AM">18 PM</option>
+            <option value="19AM">19 PM</option>
+            <option value="20AM">20 PM</option>
+            <option value="21AM">21 PM</option>
+            <option value="22AM">22 PM</option>
+            <option value="23AM">23 PM</option>
+            <option value="24AM">24 PM</option>
+          </select>
+          <p>Check-in a partir de las 2 PM</p>
+        </div>
+        <h2>Detalles del Pago</h2>
+        <div class="input-group">
+          <label for="tipo">Tipo de Trajeta:</label>
+          <select id="tipo" name="tipo">
+            <option value="visa">Visa</option>
             <option value="mastercard">Mastercard</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="tarje">Numero de Tarjeta de Credito: </label>
-            <input type="cod" id="tarje" name="tarje" required/>
-          </div>
-          <div class="fecha-caducidad-container">
-            <label for="month">Fecha Caducidad: </label>
-            <select id="month" name="month">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <select id="year" name="year">
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
-              <option value="2031">2031</option>
-              <option value="2032">2032</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="cods">Codigo de Seguridad:</label>
-            <input type="password" id="cods" name="cods" required/>
-          </div>
-          <input type="submit" value="Confirmar Reserva" />
-        </form>
-      </div>
-    </div>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="tarje">Numero de Tarjeta de Credito: </label>
+          <input type="cod" id="tarje" name="tarje" required />
+        </div>
+        <div class="fecha-caducidad-container">
+          <label for="month">Fecha Caducidad: </label>
+          <select id="month" name="month">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select id="year" name="year">
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+            <option value="2032">2032</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="cods">Codigo de Seguridad:</label>
+          <input type="password" id="cods" name="cods" required />
+        </div>
+        <input type="submit" value="Confirmar Reserva" />
+      </form>
     </div>
   </body>
   <script>
