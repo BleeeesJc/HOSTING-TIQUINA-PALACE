@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservas</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logonegro.png" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url("img/banner/Portada2.jpg") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        /* Alinea los elementos al inicio del contenedor */
+        padding-top: 2px;
+        /* Agrega espacio en la parte superior */
+        color: white;
+      }
+
+      .forms-container {
+        display: flex;
+        justify-content: center;
+        /* Centrar los formularios */
+        flex-wrap: wrap;
+        /* Permite que los formularios se envuelvan si no hay suficiente espacio */
+        padding: 10px 0;
+      }
+
+      /* Si los formularios son demasiado anchos, puedes reducir su width o usar max-width */
+      .forms-box,
+      .reservation-form {
+        max-width: 600px;
+        /* Esto los hará más pequeños y centrados dentro del .container */
+        width: 100%;
+        /* O podrías cambiar esto por un porcentaje específico */
+        padding: 20px;
+        margin: 0 10px;
+        /* Agrega margen para espacio entre los formularios */
+      }
+
+      .forms-box {
+        background-color: rgba(51, 51, 51, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        /* Adjusted width for better fit */
+        overflow: auto;
+        /* In case content overflows */
+        padding: 20px;
+        /* Aumenta el padding si es necesario */
+      }
+
+      .divider {
+        width: 20px;
+        background-color: #fff;
+        height: auto;
+        align-self: center;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="password"],
+      input[type="email"],
+      input[type="date"],
+      input[type="tel"],
+      input[type="cod"],
+      select {
+        width: 80%;
+        /* Full width */
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        width: 80%;
+        background-color: #0a58ca;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #064785;
+      }
+
+      h2 {
+        text-align: center;
+        color: white;
+      }
+      label {
+        color: white;
+      }
+
+      .input-group input {
+        width: 85%;
+        /* Asegura que los inputs ocupen todo el ancho disponible */
+        padding: 10px;
+        border: none;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+
+      .reservation-form {
+        background-color: rgba(51, 51, 51, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        width: 50%;
+        /* Adjusted width for better fit */
+        overflow: auto;
+        /* In case content overflows */
+        padding: 20px;
+        /* Aumenta el padding si es necesario */
+      }
+
+      .reservation-form .input-group label {
+        margin-bottom: 5px;
+      }
+
+      .reservation-form .input-group input {
+        width: 85%;
+        /* Full width */
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+
+      .reservation-form .input-group select {
+        width: 90%;
+        /* Ajusta el ancho como prefieras */
+        padding: 10px;
+        margin: 10px 0;
+        background: #555;
+        /* Fondo más claro para los inputs */
+        color: white;
+        /* Texto oscuro para los inputs */
+        border-radius: 5px;
+      }
+
+      .fecha-caducidad-container {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        /* Alinea los elementos verticalmente en el centro */
+        justify-content: flex-start;
+        /* Alinea los elementos a la izquierda del contenedor */
+      }
+
+      .fecha-caducidad-container label {
+        margin-right: 1px;
+        /* Espacio entre la etiqueta y el primer select */
+      }
+
+      .fecha-caducidad-container select {
+        margin-right: 10px;
+        /* Espacio entre los selects */
+        border-radius: 4px;
+        /* Bordes redondeados ligeramente */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-area">
+        <div id="sticky-header" class="main-header-area">
+          <div class="container-fluid p-0">
+            <div class="row align-items-center no-gutters">
+              <div class="col-xl-5 col-lg-6">
+                <div class="main-menu d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      <li><a class="active" href="index.html">Inicio</a></li>
+                      <li><a href="Reservas/prueba.html">Habitaciones</a></li>
+
+                      <li><a href="contact.html">Contactanos</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="forms-container">
+      <div class="forms-box">
+        <h2>Detalles de Reserva</h2>
+        <form action="submit_clientes.php" method="POST">
+          <div class="input-group">
+            <label for="Enter">Entrada:</label>
+            <input type="date" id="Enter" name="Enter" required />
+          </div>
+          <div class="input-group">
+            <label for="Leave">Salida:</label>
+            <input type="date" id="Leave" name="Leave" required />
+          </div>
+          <div class="input-group">
+            <label for="Adult">Adultos:</label>
+            <input type="number" id="Adult" name="Adult" required />
+          </div>
+          <div class="input-group">
+            <label for="Child">Niños:</label>
+            <input type="number" id="Child" name="Child" value="0" />
+          </div>
+          <div class="input-group">
+            <label for="room">Tipo:</label>
+            <select id="room" name="room">
+              <option value="simple">HABITACION SIMPLE</option>
+              <option value="doble">HABITACION DOBLE</option>
+              <option value="triple">HABITACION TRIPLE</option>
+              <option value="multiple">HABITACION MULTIPLE</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="monto">Precio Habitacion por Noche:</label>
+            <input
+              type="text"
+              id="precioHabitacionPorNoche"
+              name="precioHabitacionPorNoche"
+              required
+              readonly
+            />
+          </div>
+          <div class="input-group">
+            <label for="montoTotal">Monto Total:</label>
+            <input
+              type="text"
+              id="montoTotal"
+              name="montoTotal"
+              required
+              readonly
+            />
+          </div>
+          <h2>Detalles de Cliente</h2>
+
+          <div class="input-group">
+            <input type="text" placeholder="Nombre" name="nombre" required />
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Apellido"
+              name="apellido"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="Email"
+              placeholder="Correo Electronico"
+              name="email"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Direccion"
+              name="direccion"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input type="text" placeholder="Ciudad" name="ciudad" required />
+          </div>
+          <div class="input-group">
+            <input
+              type="cod"
+              id="codigo"
+              name="codigo_postal"
+              placeholder="Codigo Postal"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="Telefono"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <select id="pais" name="pais">
+              <option value="Afganistán">Afganistán</option>
+              <option value="Albania">Albania</option>
+              <option value="Alemania">Alemania</option>
+              <option value="Andorra">Andorra</option>
+              <option value="Angola">Angola</option>
+              <option value="Anguila">Anguila</option>
+              <option value="Antártida">Antártida</option>
+              <option value="Antigua y Barbuda">Antigua y Barbuda</option>
+              <option value="Arabia Saudita">Arabia Saudita</option>
+              <option value="Argelia">Argelia</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Armenia">Armenia</option>
+              <option value="Aruba">Aruba</option>
+              <option value="Australia">Australia</option>
+              <option value="Austria">Austria</option>
+              <option value="Azerbaiyán">Azerbaiyán</option>
+              <option value="Bahamas">Bahamas</option>
+              <option value="Bangladés">Bangladés</option>
+              <option value="Barbados">Barbados</option>
+              <option value="Baréin">Baréin</option>
+              <option value="Bélgica">Bélgica</option>
+              <option value="Belice">Belice</option>
+              <option value="Benín">Benín</option>
+              <option value="Bermudas">Bermudas</option>
+              <option value="Bielorrusia">Bielorrusia</option>
+              <option value="Birmania">Birmania</option>
+              <option value="Bolivia">Bolivia</option>
+              <option value="Bosnia y Herzegovina">Bosnia y Herzegovina</option>
+              <option value="Botsuana">Botsuana</option>
+              <option value="Brasil">Brasil</option>
+              <option value="Brunéi">Brunéi</option>
+              <option value="Bulgaria">Bulgaria</option>
+              <option value="Burkina Faso">Burkina Faso</option>
+              <option value="Burundi">Burundi</option>
+              <option value="Bután">Bután</option>
+              <option value="Cabo Verde">Cabo Verde</option>
+              <option value="Camboya">Camboya</option>
+              <option value="Camerún">Camerún</option>
+              <option value="Canadá">Canadá</option>
+              <option value="Catar">Catar</option>
+              <option value="Chad">Chad</option>
+              <option value="Chile">Chile</option>
+              <option value="China">China</option>
+              <option value="Chipre">Chipre</option>
+              <option value="Ciudad del Vaticano">Ciudad del Vaticano</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Comoras">Comoras</option>
+              <option value="Congo">Congo</option>
+              <option value="Congo (Rep. Dem.)">Congo (Rep. Dem.)</option>
+              <option value="Corea del Sur">Corea del Sur</option>
+              <option value="Corea del Norte">Corea del Norte</option>
+              <option value="Costa de Marfil">Costa de Marfil</option>
+              <option value="Costa Rica">Costa Rica</option>
+              <option value="Croacia">Croacia</option>
+              <option value="Cuba">Cuba</option>
+              <option value="Curazao">Curazao</option>
+              <option value="Dinamarca">Dinamarca</option>
+              <option value="Dominica">Dominica</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Egipto">Egipto</option>
+              <option value="El Salvador">El Salvador</option>
+              <option value="Emiratos Árabes Unidos">
+                Emiratos Árabes Unidos
+              </option>
+              <option value="Eritrea">Eritrea</option>
+              <option value="Eslovaquia">Eslovaquia</option>
+              <option value="Eslovenia">Eslovenia</option>
+              <option value="España">España</option>
+              <option value="Estados Unidos">Estados Unidos</option>
+              <option value="Estonia">Estonia</option>
+              <option value="Etiopía">Etiopía</option>
+              <option value="Filipinas">Filipinas</option>
+              <option value="Finlandia">Finlandia</option>
+              <option value="Fiyi">Fiyi</option>
+              <option value="Francia">Francia</option>
+              <option value="Gabón">Gabón</option>
+              <option value="Gambia">Gambia</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Alemania">Alemania</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Gibraltar">Gibraltar</option>
+              <option value="Grecia">Grecia</option>
+              <option value="Groenlandia">Groenlandia</option>
+              <option value="Granada">Granada</option>
+              <option value="Guadalupe">Guadalupe</option>
+              <option value="Guam">Guam</option>
+              <option value="Guatemala">Guatemala</option>
+              <option value="Guinea">Guinea</option>
+              <option value="Guinea-Bissau">Guinea-Bissau</option>
+              <option value="Guinea Ecuatorial">Guinea Ecuatorial</option>
+              <option value="Guyana">Guyana</option>
+              <option value="Haití">Haití</option>
+              <option value="Honduras">Honduras</option>
+              <option value="Hong Kong">Hong Kong</option>
+              <option value="Hungría">Hungría</option>
+              <option value="Islandia">Islandia</option>
+              <option value="India">India</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Irán">Irán</option>
+              <option value="Irak">Irak</option>
+              <option value="Irlanda">Irlanda</option>
+              <option value="Israel">Israel</option>
+              <option value="Italia">Italia</option>
+              <option value="Jamaica">Jamaica</option>
+              <option value="Japón">Japón</option>
+              <option value="Jordania">Jordania</option>
+              <option value="Kazajistán">Kazajistán</option>
+              <option value="Kenia">Kenia</option>
+              <option value="Kiribati">Kiribati</option>
+              <option value="Kuwait">Kuwait</option>
+              <option value="Kirguistán">Kirguistán</option>
+              <option value="Laos">Laos</option>
+              <option value="Letonia">Letonia</option>
+              <option value="Líbano">Líbano</option>
+              <option value="Lesoto">Lesoto</option>
+              <option value="Liberia">Liberia</option>
+              <option value="Libia">Libia</option>
+              <option value="Liechtenstein">Liechtenstein</option>
+              <option value="Lituania">Lituania</option>
+              <option value="Luxemburgo">Luxemburgo</option>
+              <option value="Macao">Macao</option>
+              <option value="Macedonia del Norte">Macedonia del Norte</option>
+              <option value="Madagascar">Madagascar</option>
+              <option value="Malawi">Malawi</option>
+              <option value="Malasia">Malasia</option>
+              <option value="Maldivas">Maldivas</option>
+              <option value="Malí">Malí</option>
+              <option value="Malta">Malta</option>
+              <option value="Marruecos">Marruecos</option>
+              <option value="Martinica">Martinica</option>
+              <option value="Mauricio">Mauricio</option>
+              <option value="Mauritania">Mauritania</option>
+              <option value="Mayotte">Mayotte</option>
+              <option value="México">México</option>
+              <option value="Micronesia">Micronesia</option>
+              <option value="Moldavia">Moldavia</option>
+              <option value="Mónaco">Mónaco</option>
+              <option value="Mongolia">Mongolia</option>
+              <option value="Montenegro">Montenegro</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="Mozambique">Mozambique</option>
+              <option value="Myanmar">Myanmar</option>
+              <option value="Namibia">Namibia</option>
+              <option value="Nauru">Nauru</option>
+              <option value="Nepal">Nepal</option>
+              <option value="Nicaragua">Nicaragua</option>
+              <option value="Níger">Níger</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Niue">Niue</option>
+              <option value="Noruega">Noruega</option>
+              <option value="Nueva Caledonia">Nueva Caledonia</option>
+              <option value="Nueva Zelanda">Nueva Zelanda</option>
+              <option value="Omán">Omán</option>
+              <option value="Países Bajos">Países Bajos</option>
+              <option value="Pakistán">Pakistán</option>
+              <option value="Palaos">Palaos</option>
+              <option value="Palestina">Palestina</option>
+              <option value="Panamá">Panamá</option>
+              <option value="Papúa Nueva Guinea">Papúa Nueva Guinea</option>
+              <option value="Paraguay">Paraguay</option>
+              <option value="Perú">Perú</option>
+              <option value="Polonia">Polonia</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Puerto Rico">Puerto Rico</option>
+              <option value="Qatar">Qatar</option>
+              <option value="Reino Unido">Reino Unido</option>
+              <option value="República Centroafricana">
+                República Centroafricana
+              </option>
+              <option value="República Checa">República Checa</option>
+              <option value="República Dominicana">República Dominicana</option>
+              <option value="Reunión">Reunión</option>
+              <option value="Ruanda">Ruanda</option>
+              <option value="Rumanía">Rumanía</option>
+              <option value="Rusia">Rusia</option>
+              <option value="Sahara Occidental">Sahara Occidental</option>
+              <option value="Samoa">Samoa</option>
+              <option value="Samoa Americana">Samoa Americana</option>
+              <option value="San Bartolomé">San Bartolomé</option>
+              <option value="San Cristóbal y Nieves">
+                San Cristóbal y Nieves
+              </option>
+              <option value="San Marino">San Marino</option>
+              <option value="San Martín (parte francesa)">
+                San Martín (parte francesa)
+              </option>
+              <option value="San Pedro y Miquelón">San Pedro y Miquelón</option>
+              <option value="San Vicente y las Granadinas">
+                San Vicente y las Granadinas
+              </option>
+              <option value="Santa Elena">Santa Elena</option>
+              <option value="Santa Lucía">Santa Lucía</option>
+              <option value="Santo Tomé y Príncipe">
+                Santo Tomé y Príncipe
+              </option>
+              <option value="Senegal">Senegal</option>
+              <option value="Serbia">Serbia</option>
+              <option value="Seychelles">Seychelles</option>
+              <option value="Sierra Leona">Sierra Leona</option>
+              <option value="Singapur">Singapur</option>
+              <option value="Sint Maarten">Sint Maarten</option>
+              <option value="Siria">Siria</option>
+              <option value="Somalia">Somalia</option>
+              <option value="Sri Lanka">Sri Lanka</option>
+              <option value="Suazilandia">Suazilandia</option>
+              <option value="Sudáfrica">Sudáfrica</option>
+              <option value="Sudán">Sudán</option>
+              <option value="Sudán del Sur">Sudán del Sur</option>
+              <option value="Suecia">Suecia</option>
+              <option value="Suiza">Suiza</option>
+              <option value="Surinam">Surinam</option>
+              <option value="Svalbard y Jan Mayen">Svalbard y Jan Mayen</option>
+              <option value="Tailandia">Tailandia</option>
+              <option value="Taiwán">Taiwán</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Tayikistán">Tayikistán</option>
+              <option value="Territorio Británico del Océano Índico">
+                Territorio Británico del Océano Índico
+              </option>
+              <option value="Territorios Australes Franceses">
+                Territorios Australes Franceses
+              </option>
+              <option value="Timor-Leste">Timor-Leste</option>
+              <option value="Togo">Togo</option>
+              <option value="Tokelau">Tokelau</option>
+              <option value="Tonga">Tonga</option>
+              <option value="Trinidad y Tobago">Trinidad y Tobago</option>
+              <option value="Túnez">Túnez</option>
+              <option value="Turkmenistán">Turkmenistán</option>
+              <option value="Turquía">Turquía</option>
+              <option value="Tuvalu">Tuvalu</option>
+              <option value="Ucrania">Ucrania</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Uruguay">Uruguay</option>
+              <option value="Uzbekistán">Uzbekistán</option>
+              <option value="Vanuatu">Vanuatu</option>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Vietnam">Vietnam</option>
+              <option value="Wallis y Futuna">Wallis y Futuna</option>
+              <option value="Yemen">Yemen</option>
+              <option value="Yibuti">Yibuti</option>
+              <option value="Zambia">Zambia</option>
+              <option value="Zimbabue">Zimbabue</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="peticiones">Peticiones Especiales:</label>
+            <input type="text" name="peticiones" />
+          </div>
+          <div class="input-group">
+            <label for="service">Servicio Extra:</label>
+            <select id="service" name="service[]" multiple required>
+              <option value="ninguno">Ninguno</option>
+              <option value="SPA">SPA</option>
+              <option value="DESA">Desayuno Buffet</option>
+              <option value="ALMU">Almuerzo Buffet</option>
+              <option value="CENA">Cena Buffet</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="llegada">Hora llegada:</label>
+            <select id="llegada" name="hora_llegada">
+              <option value="1AM">1 AM</option>
+              <option value="2AM">2 AM</option>
+              <option value="3AM">3 AM</option>
+              <option value="4AM">4 AM</option>
+              <option value="5AM">5 AM</option>
+              <option value="6AM">6 AM</option>
+              <option value="7AM">7 AM</option>
+              <option value="8AM">8 AM</option>
+              <option value="9AM">9 AM</option>
+              <option value="10AM">10 AM</option>
+              <option value="11AM">11 AM</option>
+              <option value="12AM">12 PM</option>
+              <option value="13AM">13 PM</option>
+              <option value="14AM">14 PM</option>
+              <option value="15AM">15 PM</option>
+              <option value="16AM">16 PM</option>
+              <option value="17AM">17 PM</option>
+              <option value="18AM">18 PM</option>
+              <option value="19AM">19 PM</option>
+              <option value="20AM">20 PM</option>
+              <option value="21AM">21 PM</option>
+              <option value="22AM">22 PM</option>
+              <option value="23AM">23 PM</option>
+              <option value="24AM">24 PM</option>
+            </select>
+            <p>Check-in a partir de las 2 PM</p>
+          </div>
+          <h2>Detalles del Pago</h2>
+          <div class="input-group">
+            <label for="tipo">Tipo de Trajeta:</label>
+            <select id="tipo" name="tipo">
+              <option value="visa">Visa</option>
+              <option value="mastercard">Mastercard</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="tarje">Numero de Tarjeta de Credito: </label>
+            <input type="cod" id="tarje" name="tarje" required />
+          </div>
+          <div class="fecha-caducidad-container">
+            <label for="month">Fecha Caducidad: </label>
+            <select id="month" name="month">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <select id="year" name="year">
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+              <option value="2031">2031</option>
+              <option value="2032">2032</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="cods">Codigo de Seguridad:</label>
+            <input type="password" id="cods" name="cods" required />
+          </div>
+          <input type="submit" value="Confirmar Reserva" />
+        </form>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </body>
+  <script>
+    // Objeto que asocia cada tipo de habitación con su precio
+    const preciosPorTipo = {
+      simple: 130, // Precio por noche para 'Habitación Simple'
+      doble: 190, // Precio por noche para 'Habitación Doble'
+      triple: 260, // Precio por noche para 'Habitación Triple'
+      multiple: 310, // Precio por noche para 'Habitación Múltiple'
+    };
+
+    // Función para actualizar los precios y el monto total
+    function actualizarPrecios() {
+      // Obtenemos los valores necesarios del formulario
+      const tipoHabitacion = document.getElementById("room").value;
+      const adultos = parseInt(document.getElementById("Adult").value, 10);
+      const ninos = parseInt(document.getElementById("Child").value, 10);
+      const precioHabitacionPorNoche = preciosPorTipo[tipoHabitacion];
+      const costoServiciosExtra = calcularCostoServiciosExtra();
+      const fechaEntrada = new Date(document.getElementById("Enter").value);
+      const fechaSalida = new Date(document.getElementById("Leave").value);
+      // Calculamos el monto total
+
+      const diferenciaDias = Math.ceil(
+        (fechaSalida - fechaEntrada) / (1000 * 3600 * 24)
+      );
+
+      let montoTotal = precioHabitacionPorNoche * diferenciaDias;
+
+      if (adultos > 1) {
+        montoTotal += (adultos - 1) * 30; // Incrementa 30 por cada adulto adicional
+      }
+      montoTotal += ninos * 15; // Incrementa 15 por cada niño
+      montoTotal += costoServiciosExtra;
+
+      // Actualizamos los valores en el formulario
+      document.getElementById("precioHabitacionPorNoche").value =
+        precioHabitacionPorNoche + " Bs";
+      document.getElementById("montoTotal").value = montoTotal + " Bs";
+    }
+
+    function calcularCostoServiciosExtra() {
+      const serviciosSeleccionados =
+        document.getElementById("service").selectedOptions;
+      let costoAdicional = 0;
+      for (const servicio of serviciosSeleccionados) {
+        if (servicio.value === "SPA") {
+          costoAdicional += 20;
+        } else if (
+          servicio.value === "DESA" ||
+          servicio.value === "ALMU" ||
+          servicio.value === "CENA"
+        ) {
+          costoAdicional += 15;
+        }
+      }
+      return costoAdicional;
+    }
+
+    // Añadir event listeners para los elementos del formulario que, cuando cambien, deben actualizar los precios
+    document
+      .getElementById("room")
+      .addEventListener("change", actualizarPrecios);
+    document
+      .getElementById("Adult")
+      .addEventListener("change", actualizarPrecios);
+    document
+      .getElementById("Child")
+      .addEventListener("change", actualizarPrecios);
+    document
+      .getElementById("service")
+      .addEventListener("change", actualizarPrecios);
+    document
+      .getElementById("Enter")
+      .addEventListener("change", actualizarPrecios);
+    document
+      .getElementById("Leave")
+      .addEventListener("change", actualizarPrecios);
+
+    // Actualizar precios al cargar la página
+    window.onload = actualizarPrecios;
+  </script>
+</html>
