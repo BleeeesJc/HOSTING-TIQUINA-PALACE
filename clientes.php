@@ -17,7 +17,7 @@ try {
         throw new Exception("Datos no válidos");
     }
     // Insertar datos de cliente
-    $sqlCliente = "INSERT INTO clientes (nombre, apellido, email, direccion, ciudad, codigo_postal, pais, telefono, peticiones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlCliente = "INSERT INTO clientes (nombre, apellido, email, direccion, ciudad, codigo_postal, pais, telefono, peticiones) VALUES (:nombre,:apellido,:email,:direccion,:ciudad,:codigo_postal,:pais,:telefono,:peticiones)";
     $stmtCliente = $conn->prepare($sqlCliente);
     $stmtCliente->bindParam(':nombre', $data['nombre']);
     $stmtCliente->bindParam(':apellido', $data['apellido']);
@@ -29,17 +29,15 @@ try {
     $stmtCliente->bindParam(':telefono', $data['telefono']);
     $stmtCliente->bindParam(':peticiones', $data['peticiones']);
     $stmtCliente->execute();
-    $idCliente = $stmtCliente->insert_id;
-    $stmtCliente->close();
+    $idCliente = $conn->lastInsertId();
 
     // Insertar datos de habitación
-    $sqlHabitacion = "INSERT INTO habitaciones (tipo, precio) VALUES (?, ?)";
+    $sqlHabitacion = "INSERT INTO habitaciones (tipo, precio) VALUES (:tipo, :precio)";
     $stmtHabitacion = $conn->prepare($sqlHabitacion);
     $stmtHabitacion->bindParam(':tipo', $data['tipoHabitacion']);
     $stmtHabitacion->bindParam(':precio', $data['precio']);
     $stmtHabitacion->execute();
-    $idHabitacion = $stmtHabitacion->insert_id;
-    $stmtHabitacion->close();
+    $idHabitacion = $conn->lastInsertId();
 
     // Concatenar y guardar servicios
     $descripcionServicios = "";
@@ -61,33 +59,32 @@ try {
     $costosServicios = rtrim($costosServicios, ',');
 
     if (!empty($descripcionServicios)) {
-        $sqlServicios = "INSERT INTO servicios (descripcion, costos) VALUES (?, ?)";
+        $sqlServicios = "INSERT INTO servicios (descripcion, costos) VALUES (:descripcion, :costos)";
         $stmtServicios = $conn->prepare($sqlServicios);
         $stmtServicios->bindParam(':descripcion', $descripcionServicios);
         $stmtServicios->bindParam(':costos', $costosServicios);
         $stmtServicios->execute();
-        $idServicios = $stmtServicios->insert_id;
+        $idServicios = $conn->lastInsertId();
         $stmtServicios->close();
     } else {
         $idServicios = NULL;
     }
 
     // Insertar datos de reserva
-    $sqlReserva = "INSERT INTO reservas (id_cliente, id_habitaciones, id_servicios, fecha_entrada, fecha_salida, adultos, menores, precio, monto_total, tipo_pago,hora_llegada) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlReserva = "INSERT INTO reservas (id_cliente, id_habitaciones, id_servicios, fecha_entrada, fecha_salida, adultos, menores, precio, monto_total, tipo_pago,hora_llegada) VALUES (:id_cliente,:id_habitaciones,:id_servicios,:fecha_entrada,:fecha_salida,:adultos,:menores,:precio,:monto_total,:tipo_pago,:hora_llegada)";
     $stmtReserva = $conn->prepare($sqlReserva);
     $stmtReserva->bindParam(':id_cliente',$idCliente);
     $stmtReserva->bindParam(':id_habitaciones',$idHabitacion);
     $stmtReserva->bindParam(':id_servicios',$idServicios);
-    $stmtReserva->bindParam(':fechaEntrada', $data['fechaEntrada']);
-    $stmtReserva->bindParam(':fechaSalida', $data['fechaSalida']);
+    $stmtReserva->bindParam(':fecha_entrada', $data['fechaEntrada']);
+    $stmtReserva->bindParam(':fecha_salida', $data['fechaSalida']);
     $stmtReserva->bindParam(':adultos', $data['adultos']);
-    $stmtReserva->bindParam(':ninos', $data['ninos']);
+    $stmtReserva->bindParam(':menores', $data['ninos']);
     $stmtReserva->bindParam(':precio', $data['precio']);
-    $stmtReserva->bindParam(':montoTotal', $data['montoTotal']);
-    $stmtReserva->bindParam(':tipoTarjeta', $data['tipoTarjeta']);
-    $stmtReserva->bindParam(':horaLlegada', $data['horaLlegada']);
+    $stmtReserva->bindParam(':monto_total', $data['montoTotal']);
+    $stmtReserva->bindParam(':tipo_pago', $data['tipoTarjeta']);
+    $stmtReserva->bindParam(':hora_llegada', $data['horaLlegada']);
     $stmtReserva->execute();
-    $stmtReserva->close();
 
     $conn->close();
 } catch (PDOException $e) {

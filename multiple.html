@@ -203,7 +203,7 @@
     <div class="forms-container">
       <div class="forms-box">
         <h2>Detalles de Reserva</h2>
-        <form action="submit_clientes.php" method="POST">
+        <form id="formulario">
           <div class="input-group">
             <label for="Enter">Entrada:</label>
             <input type="date" id="Enter" name="Enter" required />
@@ -252,10 +252,11 @@
           <h2>Detalles de Cliente</h2>
 
           <div class="input-group">
-            <input type="text" placeholder="Nombre" name="nombre" required />
+            <input type="text" id="nombre" placeholder="Nombre" name="nombre" required />
           </div>
           <div class="input-group">
             <input
+            id="apellido"
               type="text"
               placeholder="Apellido"
               name="apellido"
@@ -264,6 +265,7 @@
           </div>
           <div class="input-group">
             <input
+            id="email"
               type="Email"
               placeholder="Correo Electronico"
               name="email"
@@ -272,6 +274,7 @@
           </div>
           <div class="input-group">
             <input
+            id="direccion"
               type="text"
               placeholder="Direccion"
               name="direccion"
@@ -279,12 +282,12 @@
             />
           </div>
           <div class="input-group">
-            <input type="text" placeholder="Ciudad" name="ciudad" required />
+            <input type="text" id = "ciudad" placeholder="Ciudad" name="ciudad" required />
           </div>
           <div class="input-group">
             <input
               type="cod"
-              id="codigo"
+              id="codigo_postal"
               name="codigo_postal"
               placeholder="Codigo Postal"
               required
@@ -549,7 +552,7 @@
           </div>
           <div class="input-group">
             <label for="peticiones">Peticiones Especiales:</label>
-            <input type="text" name="peticiones" />
+            <input type="text" id="peticiones" name="peticiones" />
           </div>
           <div class="input-group">
             <label for="service">Servicio Extra:</label>
@@ -641,6 +644,7 @@
     </div>
     <div class="divider"></div>
   </body>
+  <script src="clientes.js"></script>
   <script>
     // Objeto que asocia cada tipo de habitación con su precio
     const preciosPorTipo = {

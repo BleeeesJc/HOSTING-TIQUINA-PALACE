@@ -10,8 +10,10 @@ function registrarclientes() {
     let adultos = document.getElementById('Adult').value;
     let ninos = document.getElementById('Child').value;
     let precio = document.getElementById('precioHabitacionPorNoche').value;
+    precio = parseFloat(precio.replace(/[^0-9.]/g, ''));
     let tipoTarjeta = document.getElementById('tipo').value;
     let montoTotal = document.getElementById('montoTotal').value;
+    montoTotal = parseFloat(montoTotal.replace(/[^0-9.]/g, ''));
     let horaLlegada = document.getElementById('llegada').value; // Hora de llegada agregada
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
@@ -81,7 +83,7 @@ function registrarclientes() {
     })
     .then(data => {
         console.log(data);
-        alert('Usuario registrado correctamente. ID de cliente: ' + data.id_usuario);
+        alert('Usuario registrado correctamente. ID de cliente: ' + data.id_cliente);
     })
     .catch(error => console.error('Error:', error));
 }
