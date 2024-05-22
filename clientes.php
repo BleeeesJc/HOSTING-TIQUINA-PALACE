@@ -65,7 +65,6 @@ try {
         $stmtServicios->bindParam(':costos', $costosServicios);
         $stmtServicios->execute();
         $idServicios = $conn->lastInsertId();
-        $stmtServicios->close();
     } else {
         $idServicios = NULL;
     }
