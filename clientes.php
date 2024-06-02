@@ -92,7 +92,6 @@ try {
     // Mostrar mensaje de éxito
     echo json_encode(['success' => 'Cliente registrado con éxito']);
 
-    $conn = null;
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 } catch (Exception $e) {

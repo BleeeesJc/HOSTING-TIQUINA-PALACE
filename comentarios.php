@@ -25,10 +25,11 @@ try {
     $stmt->bindParam(':mensaje', $data['mensaje']);
     $stmt->execute();
 
-    echo json_encode(['success' => 'Cliente registrado con éxito']);
+    echo json_encode(['success' => 'Comentario registrado con éxito']);
 
-    $conn->close();
 } catch (PDOException $e) {
+    echo json_encode(['error' => $e->getMessage()]);
+} catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
 ?>
