@@ -82,8 +82,7 @@ function registrarclientes() {
         }
     })
     .then(data => {
-        console.log(data);
-        alert('Usuario registrado correctamente. ID de cliente: ' + data.id_cliente);
+        alert('Cliente registrado correctamente.');
     })
     .catch(error => console.error('Error:', error));
 }

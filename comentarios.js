@@ -37,7 +37,7 @@ function registrarcomentarios() {
     })
     .then(data => {
         console.log(data);
-        alert('Usuario registrado correctamente. ID de comentario: ' + data.id_comentarios);
+        alert('Comentario registrado correctamente.');
     })
     .catch(error => console.error('Error:', error));
 }

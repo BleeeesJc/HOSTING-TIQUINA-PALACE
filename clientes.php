@@ -16,8 +16,9 @@ try {
     if (!$data) {
         throw new Exception("Datos no válidos");
     }
+
     // Insertar datos de cliente
-    $sqlCliente = "INSERT INTO clientes (nombre, apellido, email, direccion, ciudad, codigo_postal, pais, telefono, peticiones) VALUES (:nombre,:apellido,:email,:direccion,:ciudad,:codigo_postal,:pais,:telefono,:peticiones)";
+    $sqlCliente = "INSERT INTO clientes (nombre, apellido, email, direccion, ciudad, codigo_postal, pais, telefono, peticiones) VALUES (:nombre, :apellido, :email, :direccion, :ciudad, :codigo_postal, :pais, :telefono, :peticiones)";
     $stmtCliente = $conn->prepare($sqlCliente);
     $stmtCliente->bindParam(':nombre', $data['nombre']);
     $stmtCliente->bindParam(':apellido', $data['apellido']);
@@ -30,6 +31,7 @@ try {
     $stmtCliente->bindParam(':peticiones', $data['peticiones']);
     $stmtCliente->execute();
     $idCliente = $conn->lastInsertId();
+    
 
     // Insertar datos de habitación
     $sqlHabitacion = "INSERT INTO habitaciones (tipo, precio) VALUES (:tipo, :precio)";
@@ -42,17 +44,19 @@ try {
     // Concatenar y guardar servicios
     $descripcionServicios = "";
     $costosServicios = "";
-    foreach ($data['servicios'] as $servicio) {
-        $costo = match($servicio) {
-            'SPA' => 20,
-            'DESA' => 15,
-            'ALMU' => 15,
-            'CENA' => 15,
-            default => 0
-        };
-        if ($costo > 0) {
-            $descripcionServicios .= $servicio . ',';
-            $costosServicios .= $costo . ',';
+    if (!empty($data['servicios']) && is_array($data['servicios'])) {
+        foreach ($data['servicios'] as $servicio) {
+            $costo = match($servicio) {
+                'SPA' => 20,
+                'DESA' => 15,
+                'ALMU' => 15,
+                'CENA' => 15,
+                default => 0
+            };
+            if ($costo > 0) {
+                $descripcionServicios .= $servicio . ',';
+                $costosServicios .= $costo . ',';
+            }
         }
     }
     $descripcionServicios = rtrim($descripcionServicios, ',');
@@ -70,11 +74,11 @@ try {
     }
 
     // Insertar datos de reserva
-    $sqlReserva = "INSERT INTO reservas (id_cliente, id_habitaciones, id_servicios, fecha_entrada, fecha_salida, adultos, menores, precio, monto_total, tipo_pago,hora_llegada) VALUES (:id_cliente,:id_habitaciones,:id_servicios,:fecha_entrada,:fecha_salida,:adultos,:menores,:precio,:monto_total,:tipo_pago,:hora_llegada)";
+    $sqlReserva = "INSERT INTO reservas (id_cliente, id_habitaciones, id_servicios, fecha_entrada, fecha_salida, adultos, menores, precio, monto_total, tipo_pago, hora_llegada) VALUES (:id_cliente, :id_habitaciones, :id_servicios, :fecha_entrada, :fecha_salida, :adultos, :menores, :precio, :monto_total, :tipo_pago, :hora_llegada)";
     $stmtReserva = $conn->prepare($sqlReserva);
-    $stmtReserva->bindParam(':id_cliente',$idCliente);
-    $stmtReserva->bindParam(':id_habitaciones',$idHabitacion);
-    $stmtReserva->bindParam(':id_servicios',$idServicios);
+    $stmtReserva->bindParam(':id_cliente', $idCliente);
+    $stmtReserva->bindParam(':id_habitaciones', $idHabitacion);
+    $stmtReserva->bindParam(':id_servicios', $idServicios);
     $stmtReserva->bindParam(':fecha_entrada', $data['fechaEntrada']);
     $stmtReserva->bindParam(':fecha_salida', $data['fechaSalida']);
     $stmtReserva->bindParam(':adultos', $data['adultos']);
@@ -85,7 +89,13 @@ try {
     $stmtReserva->bindParam(':hora_llegada', $data['horaLlegada']);
     $stmtReserva->execute();
 
-    $conn->close();
+    // Mostrar mensaje de éxito
+    echo json_encode(['success' => 'Cliente registrado con éxito']);
+
+    $conn = null;
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
+} catch (Exception $e) {
+    echo json_encode(['error' => $e->getMessage()]);
 }
+?>
